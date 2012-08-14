@@ -19,7 +19,7 @@ angular.module('Calendar', [])
 				$scope.lang = $scope.locales[0];
 
 				//Set current date
-				$scope.date = new Date;
+				$scope.date = (new Date).setHours(0, 0, 0, 0);
 
 				$scope.events = [];
 
@@ -46,14 +46,15 @@ angular.module('Calendar', [])
 
 				//Change date event listener
 				scope.changeDate = function(step) {
-					var date = scope.date.getDate();
+					var dateObj = new Date(scope.date),
+						date = dateObj.getDate();
 
-					scope.date.setDate(date + step);
+					scope.date = dateObj.setDate(date + step);
 				}
 
 				//Set date today event listener
 				scope.today = function() {
-					scope.date = new Date;
+					scope.date = (new Date).setHours(0, 0, 0, 0);
 				}
 
 				//Add new event to the list
@@ -91,7 +92,11 @@ angular.module('Calendar', [])
 		}
 	})
 	.filter("eventsFilter", function() {
-		return function(input, format) {
-			return input
+		return function(item, format) {
+			var event = item[0],
+				value = event && 
+					(new Date(event.date).setHours(0, 0, 0, 0) === this.date);
+
+			return value && item;
 		}
 	});
