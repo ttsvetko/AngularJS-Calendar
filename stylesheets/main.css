@@ -144,20 +144,8 @@ input[required]::-webkit-input-placeholder::before {
 }
 
 
-/* Webkit Specific Styles */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-	.webkit-only {
-		display: none;
-	}
-}
-
-
 /* Firefox Specific Styles */
 @-moz-document url-prefix() {
-	.firefox-only {
-		display: none;
-	}
-
 	select {
 		padding: 7px;
 	}
