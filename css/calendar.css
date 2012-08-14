@@ -1,0 +1,48 @@
+.calendar {
+	height: 100%;
+	margin: 0 auto;
+	width: 500px;
+}
+
+.calendar header {
+	border-bottom: 1px solid #EEE;
+	padding: 7px 3px;
+}
+
+.calendar header .addEventBtn {
+	margin-right: 10px;
+}
+
+.calendar .content {
+	padding: 7px 3px;
+}
+
+.calendar .newEventPage {
+	overflow: hidden;
+	height: 200px;
+	padding: 0 3px;
+	-webkit-transition-property: all;
+	-webkit-transition-duration: .3s;
+}
+
+.calendar .newEventPage.hide {
+	overflow: hidden;
+	height: 0;
+}
+
+.calendar .newEventPage input[type=text] {
+	box-sizing: border-box;
+	display: block;
+	margin: 7px 0;
+	width: 100%;
+}
+
+.calendar .newEventPage footer {
+	margin-top: 7px;
+}
+
+.calendar footer {
+	border-top: 1px solid #EEE;
+	padding: 7px 0;
+	text-align: right;
+}

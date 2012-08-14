@@ -1,0 +1,54 @@
+<div class="calendar display-box box-vertical-orient">
+	<!-- Header -->
+	<header class="display-box box-align">
+		<button ng-click="toggleNewEventPage(true)" class="addEventBtn" ng-disabled="newEvent">+</button>
+		<label class="display-block box-flex">{{date | dateFilter:"dddd D, MMMM YYYY"}}</label>
+		<button ng-click="today()">Today</button>
+		<div class="group-buttons">
+			<button ng-click="changeDate(-1)">&lt;</button><!--
+			--><button ng-click="changeDate(1)">&gt;</button>
+		</div>
+	</header>
+	<!-- Content -->
+	<section class="content box-flex">
+		<section class="newEventPage" ng-class="{hide: !newEvent}">
+			<form name="newEventForm" ng-submit="addNew()">
+				<input type="text" placeholder="Subject" ng-model="newEventSubject" required/>
+				<input type="text" placeholder="Location" ng-model="newEventLocation"/>
+				<!--<div class="display-box">
+					<div>
+						<input type="number" min="0" max="1"/>
+						<label>:</label>
+						<input type="number" min="0" max="59"/>
+					</div>
+					<div class="box-flex align-right">
+						<input type="number" min="1" max="{{getDaysInMonth()}}"/>
+						<label>/</label>
+						<select ng-model="newEventMonth" ng-options="setMonth(month) as month for month in months()"></select>
+						<label>/</label>
+						<input type="number" min="2012" max="2022"/>
+					</div>
+				</div>-->
+
+				<footer>
+					<button class="icon-plus" ng-disabled="newEventForm.$invalid">Add</button>
+					<button class="icon-remove" ng-click="toggleNewEventPage(false)">Cancel</button>
+				</footer>
+			</form>
+		</section>
+		<searchfilter></searchfilter>
+		<ul class="eventList">
+			<li class="event display-box" ng-repeat="event in events | filter:filteredEvents() | eventsFilter:'test'">
+				<div class="details box-flex">
+					<div class="subject">{{event.subject}}</div>
+					<div class="location">{{event.location || "&nbsp;"}}</div>
+				</div>
+				<div class="time">{{event.date | dateFilter:"h:mm"}}</div>
+			</li>
+		</ul>
+	</section>
+	<!-- Footer -->
+	<footer>
+		<select ng-model="lang" ng-options="locale for locale in locales" ng-change="changeLocale()"></select>
+	</footer>
+</div>
