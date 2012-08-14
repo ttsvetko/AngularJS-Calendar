@@ -7,6 +7,10 @@
 .calendar header {
 	border-bottom: 1px solid #EEE;
 	padding: 7px 3px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .calendar header .addEventBtn {
