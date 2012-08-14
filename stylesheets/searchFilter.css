@@ -1,0 +1,26 @@
+.searchFilter {
+	border-bottom: 1px solid #EEE;
+	padding: 0 0 7px;
+	position: relative;
+}
+
+.searchFilter select {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-width: 0 1px 0 0;
+	margin: 1px 0 0 1px;
+	position: absolute;
+}
+
+.searchFilter select:hover,
+.searchFilter select:active,
+.searchFilter select:focus {
+	border-width: 1px;
+	margin: 0;
+}
+
+.searchFilter input {
+	margin: 0;
+	padding-left: 100px;
+	width: 100%;
+}

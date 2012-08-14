@@ -1,0 +1,163 @@
+/**
+ *
+ */
+
+/* ========================================================== *\
+	CONTENT:
+
+		$SHARED
+		$ANGULAR
+\* ========================================================== */
+
+
+
+
+
+/* ========================================================== *\
+							$SHARED
+\* ========================================================== */
+::-webkit-validation-bubble {
+	opacity: 0;
+}
+::-webkit-validation-bubble-top-outer-arrow {
+
+}
+::-webkit-validation-bubble-top-inner-arrow {
+
+}
+::-webkit-validation-bubble-message {
+	border: 1px solid #EEE;
+	border-radius: 2px;
+}
+
+div {display: none}
+body div {display: block}
+
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.no-js body {
+	height: auto;
+}
+
+input[required]::-webkit-input-placeholder::before {
+	content: "*";
+	color: red;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.box-align {
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	box-align: center;
+}
+
+.box-flex {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+}
+
+.box-vertical-orient {
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-ms-box-orient: vertical;
+	box-orient: vertical;
+}
+
+.display-block {
+	display: block;
+}
+
+.display-box {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+}
+
+.error {
+	border-color: #670717;
+	background-color: #c60e2d;
+	color: #FFF;
+}
+
+.group-buttons {
+	margin: 0 0 0 5px;
+}
+
+.group-buttons button {
+	margin: 0 0 0 -1px;
+}
+
+.group-buttons button:first-child {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.group-buttons button:last-child {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.msg {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px;
+	font-weight: bold;
+	padding: 7px;
+	text-align: center;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+
+.eventList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.event {
+	padding: 7px 3px;
+	border-bottom: 1px solid #EEE;
+}
+
+.event .location {
+	color: #999;
+	font-size: 80%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.webkit-only {
+		display: none;
+	}
+}
+
+
+
+
+
+/* ========================================================== *\
+							$ANGULAR
+	! NOTE !
+
+	KEEP LAST FOR HIDING ANGULAR TEMPLATES IN UNCOMPILED FORMAT
+
+\* ========================================================== */
+input.ng-invalid:focus {
+	border-color: rgba(255, 0, 0, 1);
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none!important;
+}
