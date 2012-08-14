@@ -81,6 +81,10 @@ input[required]::-webkit-input-placeholder::before {
 	display: -webkit-box;
 	display: -moz-box;
 	display: box;
+
+	/* Fix FF issue with flexbox */
+	-moz-box-sizing: border-box;
+	width: 100%;
 }
 
 .error {
@@ -137,9 +141,23 @@ input[required]::-webkit-input-placeholder::before {
 	font-size: 80%;
 }
 
+
+/* Webkit Specific Styles */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	.webkit-only {
 		display: none;
+	}
+}
+
+
+/* Firefox Specific Styles */
+@-moz-document url-prefix() {
+	.firefox-only {
+		display: none;
+	}
+	
+	select {
+		padding: 7px;
 	}
 }
 
