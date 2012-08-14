@@ -1,10 +1,10 @@
 <div class="calendar display-box box-vertical-orient">
 	<!-- Header -->
-	<header class="display-box box-align">
+	<header class="display-box box-align no-flexbox-overflow">
 		<button ng-click="toggleNewEventPage(true)" class="addEventBtn" ng-disabled="newEvent">+</button>
-		<label class="display-block box-flex">{{date | dateFilter:"dddd D, MMMM YYYY"}}</label>
-		<button ng-click="today()">Today</button>
-		<div class="group-buttons">
+		<label class="display-block box-flex no-flexbox-display-inline-block">{{date | dateFilter:"dddd D, MMMM YYYY"}}</label>
+		<button ng-click="today()" class="no-flexbox-float-right">Today</button>
+		<div class="group-buttons no-flexbox-display-inline-block no-flexbox-float-right">
 			<button ng-click="changeDate(-1)">&lt;</button><!--
 			--><button ng-click="changeDate(1)">&gt;</button>
 		</div>
@@ -39,11 +39,11 @@
 		<searchfilter></searchfilter>
 		<ul class="eventList">
 			<li class="event display-box" ng-repeat="event in events | filter:filteredEvents() | eventsFilter:'test'">
-				<div class="details box-flex">
+				<div class="details box-flex no-flexbox-display-inline-block">
 					<div class="subject">{{event.subject}}</div>
 					<div class="location">{{event.location || "&nbsp;"}}</div>
 				</div>
-				<div class="time">{{event.date | dateFilter:"h:mm"}}</div>
+				<div class="time no-flexbox-display-inline-block">{{event.date | dateFilter:"h:mm"}}</div>
 			</li>
 		</ul>
 	</section>

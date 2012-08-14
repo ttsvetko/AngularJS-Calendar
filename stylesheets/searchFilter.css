@@ -23,5 +23,13 @@
 	margin: 0;
 	padding-left: 100px;
 	width: 100%;
-	-moz-box-sizing: border-box;/* Fix FF issue with flexbox */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	/* Fix FF issue with flexbox */
+}
+
+.no-flexbox .searchFilter input {
+	padding-left: 120px;
 }

@@ -1,0 +1,21 @@
+.no-flexbox .no-flexbox-float-right {
+	float: right;
+}
+
+.no-flexbox .no-flexbox-display-inline-block {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.no-flexbox .no-flexbox-overflow {
+	overflow: hidden;
+}
+
+.no-flexbox .event .details {
+	width: 80%;
+}
+
+.no-flexbox .event .time {
+	text-align: right;
+	width: 18%;
+}
