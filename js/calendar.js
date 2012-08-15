@@ -23,20 +23,21 @@ angular.module('Calendar', [])
 
 				$scope.events = [];
 
-				//Get localized months' names
-				$scope.months = function () {
-					return moment.months;
-				}
+				//adding new event flag - used to toggle newEvent page
+				$scope.newEvent = false;
 			},
 			restrict: 'E',
 			templateUrl: 'templates/calendar.html',
 			replace: true,
 
 			link: function(scope, element, attrs, controller) {
-				//adding new event flag - used to toggle newEvent page
-				scope.newEvent = false;
-
 				/* public method */
+
+				//Get localized months' names
+				scope.months = function () {
+					return moment.months;
+				}
+
 				scope.toggleNewEventPage = function(addNew) {
 					scope.newEventSubject = "";
 					scope.newEventLocation = "";
@@ -76,8 +77,9 @@ angular.module('Calendar', [])
 				//Filters events based on the selected filter and entered text
 				scope.filteredEvents = function(element, element2) {
 					return function(element) {
-						return element[scope.searchFilterSelect].toLowerCase()
-								.match((scope.searchText || "").toLowerCase());
+						return (new Date(element.date).setHours(0, 0, 0, 0) === scope.date) &&
+								element[scope.searchFilterSelect].toLowerCase()
+									.match((scope.searchText || "").toLowerCase());
 					};
 				}
 
@@ -91,12 +93,3 @@ angular.module('Calendar', [])
 			return moment(input).format(format);
 		}
 	})
-	.filter("eventsFilter", function() {
-		return function(item, format) {
-			var event = item[0],
-				value = event && 
-					(new Date(event.date).setHours(0, 0, 0, 0) === this.date);
-
-			return value && item;
-		}
-	});

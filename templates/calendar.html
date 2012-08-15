@@ -38,7 +38,7 @@
 		</section>
 		<searchfilter></searchfilter>
 		<ul class="eventList">
-			<li class="event display-box" ng-repeat="event in events | filter:filteredEvents() | eventsFilter:'test'">
+			<li class="event display-box" ng-repeat="event in events | filter:filteredEvents()">
 				<div class="details box-flex">
 					<div class="subject">{{event.subject}}</div>
 					<div class="location">{{event.location || "&nbsp;"}}</div>
