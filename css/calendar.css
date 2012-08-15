@@ -1,12 +1,15 @@
 .calendar {
 	height: 100%;
 	margin: 0 auto;
-	width: 100%;
 }
 
 .calendar header {
 	border-bottom: 1px solid #EEE;
 	padding: 7px 3px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .calendar header .addEventBtn {
@@ -19,7 +22,7 @@
 
 .calendar .newEventPage {
 	overflow: hidden;
-	height: 200px;
+	height: 260px;
 	padding: 0 3px;
 	-webkit-transition-property: all;
 	-webkit-transition-duration: .3s;
@@ -39,6 +42,10 @@
 
 .calendar .newEventPage footer {
 	margin-top: 7px;
+}
+
+.eventList {
+    overflow: auto;
 }
 
 .calendar footer {
