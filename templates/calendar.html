@@ -10,25 +10,25 @@
 		</div>
 	</header>
 	<!-- Content -->
-	<section class="content box-flex">
+	<section class="content box-flex display-box box-vertical-orient">
 		<section class="newEventPage" ng-class="{hide: !newEvent}">
 			<form name="newEventForm" ng-submit="addNew()">
 				<input type="text" placeholder="Subject" ng-model="newEventSubject" required/>
 				<input type="text" placeholder="Location" ng-model="newEventLocation"/>
-				<!--<div class="display-box">
+				<div class="display-box">
 					<div>
-						<input type="number" min="0" max="1"/>
+						<input type="number" min="0" max="23" ng-model="newEventHour"/>
 						<label>:</label>
-						<input type="number" min="0" max="59"/>
+						<input type="number" min="0" max="59" ng-model="newEventMinutes"/>
 					</div>
 					<div class="box-flex align-right">
-						<input type="number" min="1" max="{{getDaysInMonth()}}"/>
+						<input type="number" min="1" max="{{getDaysInMonth()}}" ng-model="newEventDate"/>
 						<label>/</label>
-						<select ng-model="newEventMonth" ng-options="setMonth(month) as month for month in months()"></select>
+						<select ng-model="newEventMonth" ng-options="setMonth(month) as month for month in months()" ng-change="newEventMonthChange()"></select>
 						<label>/</label>
-						<input type="number" min="2012" max="2022"/>
+						<input type="number" min="2012" max="2022" ng-model="newEventYear"/>
 					</div>
-				</div>-->
+				</div>
 
 				<footer>
 					<button class="icon-plus" ng-disabled="newEventForm.$invalid">Add</button>
@@ -37,15 +37,15 @@
 			</form>
 		</section>
 		<searchfilter></searchfilter>
-		<ul class="eventList">
-			<li class="event display-box" ng-repeat="event in events | filter:filteredEvents()">
-				<div class="details box-flex no-flexbox-display-inline-block">
-					<div class="subject">{{event.subject}}</div>
-					<div class="location">{{event.location || "&nbsp;"}}</div>
-				</div>
-				<div class="time no-flexbox-display-inline-block">{{event.date | dateFilter:"h:mm"}}</div>
-			</li>
-		</ul>
+        <div class="box-flex eventList">
+            <div class="event display-box" ng-repeat="event in events | filter:filteredEvents()">
+                <div class="details box-flex no-flexbox-display-inline-block">
+                    <div class="subject">{{event.subject}}</div>
+                    <div class="location">{{event.location || "&nbsp;"}}</div>
+                </div>
+                <div class="time no-flexbox-display-inline-block">{{event.date | dateFilter:"H:mm"}}</div>
+            </div>
+        </div>
 	</section>
 	<!-- Footer -->
 	<footer>

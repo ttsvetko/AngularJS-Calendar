@@ -45,6 +45,10 @@
 	margin-top: 7px;
 }
 
+.eventList {
+    overflow: auto;
+}
+
 .calendar footer {
 	border-top: 1px solid #EEE;
 	padding: 7px 0;

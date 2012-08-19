@@ -31,17 +31,44 @@ angular.module('Calendar', [])
 			replace: true,
 
 			link: function(scope, element, attrs, controller) {
+                /* private methods */
+               function setNewEventDate() {
+                    var selectedDate = moment(scope.date),
+                        now = moment();
+                    
+                    scope.newEventHour = now.hours();
+                    scope.newEventMinutes = now.minutes();
+                    scope.newEventDate = selectedDate.date();
+                    scope.newEventMonth = selectedDate.month();
+                    scope.newEventYear = selectedDate.year();
+                }
+                
 				/* public method */
 
+                scope.setMonth = function(month) {
+                    return scope.months().indexOf(month)
+                }
+                    
+                scope.getDaysInMonth = function() {
+                    var date = new Date(scope.newEventYear, scope.newEventMonth, 1);
+                    return moment(date).daysInMonth();
+                }
+                    
+                scope.newEventMonthChange = function() {
+                    scope.newEventDate = Math.min(scope.newEventDate, scope.getDaysInMonth());
+                }
+                
 				//Get localized months' names
 				scope.months = function () {
 					return moment.months;
 				}
 
 				scope.toggleNewEventPage = function(addNew) {
-					scope.newEventSubject = "";
-					scope.newEventLocation = "";
-
+					if (addNew) {
+						scope.newEventSubject = "";
+						scope.newEventLocation = "";
+                        setNewEventDate();
+					}
 					scope.newEvent = !!addNew;
 				}
 
@@ -51,11 +78,15 @@ angular.module('Calendar', [])
 						date = dateObj.getDate();
 
 					scope.date = dateObj.setDate(date + step);
+                    
+                    setNewEventDate();
 				}
 
 				//Set date today event listener
 				scope.today = function() {
 					scope.date = (new Date).setHours(0, 0, 0, 0);
+                    
+                    setNewEventDate();
 				}
 
 				//Add new event to the list
@@ -63,7 +94,7 @@ angular.module('Calendar', [])
 					scope.events.push({
 						subject: scope.newEventSubject,
 						location: scope.newEventLocation,
-						date: (new Date).getTime()
+						date: (new Date(scope.newEventYear, scope.newEventMonth, scope.newEventDate, scope.newEventHour, scope.newEventMinutes)).getTime()
 					})
 					scope.toggleNewEventPage(false);
 				}
@@ -77,7 +108,7 @@ angular.module('Calendar', [])
 				//Filters events based on the selected filter and entered text
 				scope.filteredEvents = function(element, element2) {
 					return function(element) {
-						return (new Date(element.date).setHours(0, 0, 0, 0) === scope.date) &&
+						return (new Date(element.date).setHours(0, 0, 0, 0) === scope.date) && 
 								element[scope.searchFilterSelect].toLowerCase()
 									.match((scope.searchText || "").toLowerCase());
 					};
