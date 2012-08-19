@@ -2,7 +2,7 @@
 	<!-- Header -->
 	<header class="display-box box-align no-flexbox-overflow">
 		<button ng-click="toggleNewEventPage(true)" class="addEventBtn" ng-disabled="newEvent">+</button>
-		<label class="display-block box-flex no-flexbox-display-inline-block">{{date | dateFilter:"dddd D, MMMM YYYY"}}</label>
+		<label class="display-block box-flex no-flexbox-display-inline-block">{{date | dateFilter}}</label>
 		<button ng-click="today()" class="no-flexbox-float-right">Today</button>
 		<div class="group-buttons no-flexbox-display-inline-block no-flexbox-float-right">
 			<button ng-click="changeDate(-1)">&lt;</button><!--

@@ -90,6 +90,6 @@ angular.module('Calendar', [])
 	})
 	.filter('dateFilter', function() {
 		return function(input, format) {
-			return moment(input).format(format);
+			return moment(input).format(format || "LL");
 		}
 	})
